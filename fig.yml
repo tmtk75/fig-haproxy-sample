@@ -1,0 +1,29 @@
+haproxy:
+  build: ./haproxy
+  volumes:
+    - "./haproxy:/haproxy-override"
+  ports:
+    - "8080:8080"
+    - "8000:8000"
+  links:
+    - "webapp1:webapp1"
+    - "webapp2:webapp2"
+
+webapp1:
+  build: ./webapp
+  command: python app.py
+  ports:
+    - "5000:5000"
+  links:
+    - "redis:redis"
+
+webapp2:
+  build: ./webapp
+  command: python app.py
+  ports:
+    - "5001:5000"
+  links:
+    - "redis:redis"
+
+redis:
+  image: redis
