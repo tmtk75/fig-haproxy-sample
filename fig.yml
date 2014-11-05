@@ -1,8 +1,9 @@
 haproxy:
-  build: ./haproxy
+  image: dockerfile/haproxy
   volumes:
-    - "./haproxy:/haproxy-override"
+    - .:/haproxy-override
   ports:
+    - "80:80"
     - "8080:8080"
   links:
     - "webapp1:webapp1"
