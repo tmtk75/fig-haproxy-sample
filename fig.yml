@@ -4,7 +4,6 @@ haproxy:
     - "./haproxy:/haproxy-override"
   ports:
     - "8080:8080"
-    - "8000:8000"
   links:
     - "webapp1:webapp1"
     - "webapp2:webapp2"
